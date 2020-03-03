@@ -1,0 +1,36 @@
+include _externalIncludes
+include _internalIncludes
+
+mixin header-nav-el(json)
+  each data in json
+    .header-nav-el
+      a.header-nav-el-link(href=data.link) #{data.title}
+      .header-nav-el-desc #{data.description}
+
+mixin header-box-nav-el(json)
+  each data in json
+    a.main-box-nav-link(href=data.link) #{data.title}
+
+
+doctype html
+html(lang='ru')
+  include head
+  body
+    .container
+      section.main#start
+        .header
+          a.header-logotype(href="#main")
+            +icon('logotype')
+          .header-nav
+            +header-nav-el(getData('header'))
+          a.header-nav-button#change-nav(href="#nav")
+            +icon('navigation')
+        .wrapper
+          .main-box
+            .main-box-nav
+              +header-box-nav-el(getData('main'))
+            p.main-box-description Продукция завода <span class="text-border-dashed">«Гиагинский»</span> представлена во всех федеральных сетях, а потребители знают и ищут именно наш бренд.
+            
+    block content
+    script(src='assets/scripts/app.min.js')
+    script(src='assets/scripts/main.js')

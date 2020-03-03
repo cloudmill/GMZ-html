@@ -1,0 +1,148 @@
+@import '../../node_modules/normalize.css/normalize.css';
+@import 'helpers/variables'; // Переменные
+@import 'helpers/mixins'; // Миксины
+@import 'helpers/fonts'; // Шрифты
+@import 'helpers/gradients'; // Градиенты
+@import 'helpers/basics'; // Основные общие стили
+@import 'helpers/text-styles'; // Стили текстов
+@import '../blocks/**/*';
+@import '../components/**/*';
+@import '../pages/**/*';
+
+.container {
+  padding-top: $container-padding;
+  padding-right: $container-padding;
+  padding-left: $container-padding;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  max-width: 1560px;
+  min-height: 100vh;
+  margin: 0 auto;
+  position: relative;
+}
+
+.wrapper {
+  padding-right: 180px;
+  padding-left: 180px;
+}
+
+section {
+  &.main {
+    background-color: $background-additional;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-right: 80px;
+  padding-left: 80px;
+  top: 20px;
+
+  &-logotype {
+    svg {
+      height: 96px;
+      width: 151px;
+    }
+  }
+
+  &-nav {
+    display: flex;
+    flex-direction: row;
+
+    &-el {
+      text-align: center;
+      font-style: normal;
+      font-weight: normal;
+      margin-right: 30px;
+      margin-left: 30px;
+      color: #312930;
+      font-family: 'CeraPro-Regular';
+
+      &-link {
+        font-size: 26px;
+        line-height: 33px;
+        transition: 0.2s;
+
+        &:hover {
+          color: #EE7754;
+        }
+      }
+
+      &-desc {
+        font-size: 13px;
+        line-height: 33px;
+      }
+    }
+
+    &-button {
+      svg {
+        height: 78px;
+        width: 76px;
+      }
+    }
+  }
+}
+
+.main-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 120px;
+
+  &-nav {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    color: #312930;
+    font-family: 'CeraPro-Regular';
+    
+    &-link {
+      margin-right: 25px;
+      margin-left: 25px;
+      font-size: 25px;
+      line-height: 31px;
+      transition: 0.2s;
+
+      &:first-child {
+        margin-left: 0px;
+      }
+
+      &::after {
+        margin-top: 5px;
+        display: block;
+        content: '';
+        height: 1px;
+        color: #EE7754;
+        background: #EE7754;
+        visibility: hidden;
+      }
+
+      &:hover {
+        color: #EE7754;
+      }
+
+      &:hover::after {
+        visibility: visible;
+      }
+    }
+  }
+
+  &-description {
+    font-family: 'PFRegalTextPro-Bold';
+    font-size: 52px;
+    line-height: 52px;
+    margin-top: 99px;
+    margin-bottom: 100px;
+  }
+  
+
+  &-description > span.text-border-dashed {
+    background: url(../images/text-border-dashed.svg);
+  }
+}
