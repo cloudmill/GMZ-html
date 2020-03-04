@@ -21,12 +21,11 @@ module.exports = () => (
           { progessive: true },
           { interlaced: true },
           { removeViewBox: false },
-          { removeUselessStrokeAndFill: true },
+          { removeUselessStrokeAndFill: false },
           { cleanupIDs: false },
           { cleanupAttrs: true },
           { removeMetadata: true },
           { removeTitle: true },
-          { removeAttrs: { attrs: '(fill|stroke|data-name)' } },
         ],
       }),
     ]))

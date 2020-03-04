@@ -17,21 +17,41 @@
   margin-right: auto;
   max-width: 100%;
   box-sizing: border-box;
-  max-width: 1560px;
-  min-height: 100vh;
   margin: 0 auto;
   position: relative;
-}
 
-.wrapper {
-  padding-right: 180px;
-  padding-left: 180px;
+  @include screen('xs', 'max') {
+    padding-top: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 section {
+  padding-right: $min-main-padding;
+  padding-left: $min-main-padding;
+  
   &.main {
     background-color: $background-additional;
   }
+
+  &.info {
+    position: relative;
+    min-height: 100vh;
+
+    &::after {
+      display: block;
+      content: '';
+      background-image: url(../images/section-main-header.svg);
+      width: 100%;
+      height: 50px;
+      position: absolute;
+      left: 0;
+      top: -50px;
+      background-size: cover;
+    }
+  }
+  
 }
 
 .header {
@@ -40,27 +60,41 @@ section {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding-right: 80px;
-  padding-left: 80px;
   top: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
 
   &-logotype {
     svg {
       height: 96px;
       width: 151px;
+      
+      @include screen('xs', 'max') {
+        height: 59px;
+        width: 94px;
+      }
     }
   }
 
   &-nav {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+
+    @include screen('custom-860', 'max') {
+      &.lg {
+        @include screen('custom-660', 'max') {
+          display: none;
+        }
+      }
+    }
 
     &-el {
       text-align: center;
       font-style: normal;
       font-weight: normal;
-      margin-right: 30px;
-      margin-left: 30px;
       color: #312930;
       font-family: 'CeraPro-Regular';
 
@@ -68,6 +102,10 @@ section {
         font-size: 26px;
         line-height: 33px;
         transition: 0.2s;
+
+        @include screen('md', 'max') {
+          font-size: 22px;
+        }
 
         &:hover {
           color: #EE7754;
@@ -77,13 +115,32 @@ section {
       &-desc {
         font-size: 13px;
         line-height: 33px;
+
+        @include screen('md', 'max') {
+          font-size: 10px;
+          line-height: 30px;
+        }
+
+        @include screen('custom-800', 'max') {
+          display: none;
+        }
       }
     }
 
     &-button {
       svg {
-        height: 78px;
-        width: 76px;
+        height: 68px;
+        width: 66px;
+
+        @include screen('md', 'max') {
+          height: 66px;
+          width: 91px;
+        }
+
+        @include screen('xs', 'max') {
+          height: 48px;
+          width: 51px;
+        }
       }
     }
   }
@@ -93,24 +150,36 @@ section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 120px;
+  padding-top: 120px;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  @include screen('custom-660', 'max') {
+    padding-top: 60px;
+  }
 
   &-nav {
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
     color: #312930;
     font-family: 'CeraPro-Regular';
-    
+
     &-link {
-      margin-right: 25px;
-      margin-left: 25px;
       font-size: 25px;
       line-height: 31px;
       transition: 0.2s;
+      margin-right: 50px;
 
-      &:first-child {
-        margin-left: 0px;
+      @include screen('sm', 'max') {
+        font-size: 20px;
+        margin-right: 20px;
+      }
+
+      @include screen('xs', 'max') {
+        font-size: 15px;
+        line-height: 20px;
+        margin-right: 10px;
       }
 
       &::after {
@@ -138,11 +207,24 @@ section {
     font-size: 52px;
     line-height: 52px;
     margin-top: 99px;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
+    position: relative;
+    width: 90%;
+
+    @include screen('sm', 'max') {
+      font-size: 34px;
+      margin-top: 50px;
+      line-height: 110%;
+    }
+
+    @include screen('xs', 'max') {
+      margin-top: 40px;
+      font-size: 24px;
+      margin-bottom: 90px;
+      line-height: 110%;
+      width: 100%;
+    }
+  
   }
   
-
-  &-description > span.text-border-dashed {
-    background: url(../images/text-border-dashed.svg);
-  }
 }
