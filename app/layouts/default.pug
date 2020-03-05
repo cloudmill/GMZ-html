@@ -17,6 +17,12 @@ mixin info-box-stats-el(json)
       h3 #{data.number} <sup>#{data.units}</sup>
       p #{data.text}
 
+mixin prevs-row-el(json)
+  each data in json
+    .prevs-box-row-el
+      +icon(data.icon)(class=data.icon)
+      p #{data.text}
+
 
 doctype html
 html(lang='ru')
@@ -35,6 +41,24 @@ html(lang='ru')
           .main-box-nav
             +header-box-nav-el(getData('main'))
           p.main-box-description Продукция завода <span class="text-border-dashed">«Гиагинский»</span> представлена во всех федеральных сетях, а потребители знают и ищут именно наш бренд.
+      section.info#info
+        .info-box
+          .info-box-header
+            h2 За 2019 год мы произвели
+          .info-box-stats
+            +info-box-stats-el(getData('info'))
+          .info-box-details
+            a(href="#details") Скачать презентацию
+      section.prevs
+        .prevs-box
+          .prevs-box-info
+            h2 Имеем эксклюзивное право на производство Адыгейского сыра и производим по технологии НМПТ
+            +icon('prevslogo')
+          .prevs-box-row
+            +prevs-row-el(getData('prevs'))
+            .prevs-box-row-el
+              +icon('pack')(class="pack")
+
 
     block content
     script(src='assets/scripts/app.min.js')
