@@ -1,13 +1,13 @@
 include _externalIncludes
 include _internalIncludes
 
-mixin header-nav-el(json)
-  each data in json
-    .header-nav-el
-      a.header-nav-el-link(href=data.link) #{data.title}
-      .header-nav-el-desc #{data.description}
-
 mixin header-box-nav-el(json)
+  each data in json
+    .header-box-nav-el
+      a.header-box-nav-el-link(href=data.link) #{data.title}
+      .header-box-nav-el-desc #{data.description}
+
+mixin main-box-nav-el(json)
   each data in json
     a.main-box-nav-link(href=data.link) #{data.title}
 
@@ -23,34 +23,36 @@ mixin prevs-row-el(json)
       +icon(data.icon)(class=data.icon)
       p #{data.text}
 
-
 doctype html
 html(lang='ru')
   include head
   body
     .container
-      section.main#main
-        .header
-          a.header-logotype(href="#main")
+      .header
+        .header-box
+          a.header-box-logotype(href="#main")
             +icon('logotype')
-          .header-nav.lg
-            +header-nav-el(getData('header'))
-          a.header-nav-button#change-nav(href="#nav")
+          .header-box-nav.lg
+            +header-box-nav-el(getData('header'))
+          a.header-box-nav-button#change-nav(href="#nav")
             +icon('navigation')
-        .main-box
+      section.main#main
+        .content.main-box
           .main-box-nav
-            +header-box-nav-el(getData('main'))
-          p.main-box-description Продукция завода <span class="text-border-dashed">«Гиагинский»</span> представлена во всех федеральных сетях, а потребители знают и ищут именно наш бренд.
+            +main-box-nav-el(getData('main'))
+          h2.main-box-description Продукция завода <span class="text-border-dashed">«Гиагинский»</span> представлена во всех федеральных сетях, а потребители знают и ищут именно наш бренд.
       section.info#info
-        .info-box
+        .content.info-box
+          //Тут костыли с гридами, не бей 
           .info-box-header
-            h2 За 2019 год мы произвели
+            p За 2019 год мы произвели
           .info-box-stats
             +info-box-stats-el(getData('info'))
           .info-box-details
             a(href="#details") Скачать презентацию
+          //Тут костыли с гридами, не бей
       section.prevs
-        .prevs-box
+        .content.prevs-box
           .prevs-box-info
             h2 Имеем эксклюзивное право на производство Адыгейского сыра и производим по технологии НМПТ
             +icon('prevslogo')
